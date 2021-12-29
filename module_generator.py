@@ -2,6 +2,7 @@ import os
 import pathlib
 import shutil
 import argparse
+import re
 from posixpath import dirname
 
 class ArgumentsParser:
@@ -37,14 +38,15 @@ class ModuleParser:
 
     # Replace text in the given file from Template text to Module text
     def __replaceContents(self, filePath):
-        f = open(filePath,'r')
-        lines = f.readlines()
-        f.close()
-        f = open(filePath,'w')
-        for line in lines:
-            newline = line.replace(self.templateName, self.moduleName)
-            f.write(newline)
-        f.close()
+        # https://www.kite.com/python/answers/how-to-update-and-replace-text-in-a-file-in-python
+        with open(filePath, 'r+') as f:
+            text = f.read()
+            text = re.sub(self.templateName, self.moduleName, text)
+            f.seek(0)
+            f.write(text)
+            f.truncate()
+
+##########################################################################################################
 
 # Parse user input arguments and prepare names / paths
 argumentsParser = ArgumentsParser()
