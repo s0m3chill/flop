@@ -11,7 +11,7 @@ def replaceContents(filePath):
     f.close()
     f = open(filePath,'w')
     for line in lines:
-        newline = line.replace(template, moduleName)
+        newline = line.replace(templateName, moduleName)
         f.write(newline)
     f.close()
 
@@ -24,8 +24,8 @@ args = parser.parse_args()
 # Constants
 extension = '.dart'
 fallbackName = 'Default'
-template = args.Template if args.Template else fallbackName
-templatePath = os.getcwd() + '/' + template
+templateName = args.Template if args.Template else fallbackName
+templatePath = os.getcwd() + '/' + templateName
 moduleName = args.Name if args.Name else fallbackName
 generatedModuleName = 'gen_' + moduleName
 
@@ -37,4 +37,10 @@ for root, dirs, files in os.walk(generatedModuleName):
     for fileName in files:
         if pathlib.Path(fileName).suffix == extension:
             filePath = os.path.join(root, fileName)
+            renamedFilePath = filePath.replace(templateName.lower(), moduleName.lower())
             replaceContents(filePath)
+            os.rename(filePath, renamedFilePath)
+
+
+       
+   
