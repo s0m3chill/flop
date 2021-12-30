@@ -40,7 +40,8 @@ class ModuleParser:
     def __replaceContents(self, filePath):
         with open(filePath, 'r+') as f:
             text = f.read()
-            text = re.sub(self.templateName, self.moduleName, text, flags=re.IGNORECASE)
+            text = re.sub(self.templateName.lower(), self.moduleName.lower(), text)
+            text = re.sub(self.templateName, self.moduleName, text)
             f.seek(0)
             f.write(text)
             f.truncate()
