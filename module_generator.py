@@ -3,10 +3,10 @@ import pathlib
 import shutil
 import argparse
 import re
-from posixpath import dirname
 
 class ArgumentsParser:
     __fallbackName = 'Default'
+    __templatesFolder = '/Templates/'
 
     def parseUserInput(self):
         parser = argparse.ArgumentParser(description = 'Generates Flutter submodule architecture based on template')
@@ -14,7 +14,7 @@ class ArgumentsParser:
         parser.add_argument('-n', '--Name', help = 'Name of generated module')
         args = parser.parse_args()
         self.templateName = args.Template if args.Template else self.__fallbackName
-        self.templatePath = os.getcwd() + '/' + self.templateName
+        self.templatePath = os.getcwd() + self.__templatesFolder + self.templateName
         self.moduleName = args.Name if args.Name else self.__fallbackName
 
 
@@ -38,7 +38,6 @@ class ModuleParser:
 
     # Replace text in the given file from Template text to Module text
     def __replaceContents(self, filePath):
-        # https://www.kite.com/python/answers/how-to-update-and-replace-text-in-a-file-in-python
         with open(filePath, 'r+') as f:
             text = f.read()
             text = re.sub(self.templateName, self.moduleName, text)
@@ -59,8 +58,3 @@ shutil.copytree(argumentsParser.templatePath, generatedModuleName)
 # Parse copied template tree and rename files / contents to module name
 moduleParser = ModuleParser(argumentsParser.templateName, argumentsParser.moduleName, generatedModuleName)
 moduleParser.traverseAndParseFiles()
-
-
-
-       
-   
