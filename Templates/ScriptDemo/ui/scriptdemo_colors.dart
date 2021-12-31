@@ -1,6 +1,6 @@
 import 'package:flutter/rendering.dart';
-import 'package:basic_server_response.dart';
+import 'package:scriptdemo_server_response.dart';
 
-class BasicColors {
+class ScriptDemoColors {
   final appTheme = const Color.fromARGB(255, 255, 255, 1);
 }

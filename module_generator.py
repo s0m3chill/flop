@@ -5,7 +5,7 @@ import argparse
 import re
 
 class ArgumentsParser:
-    __fallbackName = 'Default'
+    __fallbackName = 'ScriptDemo'
     __templatesFolder = '/Templates/'
 
     def parseUserInput(self):
