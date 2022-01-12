@@ -5,8 +5,8 @@ import argparse
 import re
 
 class ArgumentsParser:
-    __fallbackName = 'ScriptDemo'
-    __templatesFolder = '/Templates/'
+    __fallbackName = 'Template'
+    __templatesFolder = '/templates/'
 
     def parseUserInput(self):
         parser = argparse.ArgumentParser(description = 'Generates Flutter submodule architecture based on template')
