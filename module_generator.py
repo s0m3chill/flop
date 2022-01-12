@@ -5,11 +5,11 @@ import argparse
 import re
 
 class ArgumentsParser:
-    __fallbackName = 'Template'
+    __fallbackName = 'Application'
     __templatesFolder = '/templates/'
 
     def parseUserInput(self):
-        parser = argparse.ArgumentParser(description = 'Generates Flutter submodule architecture based on template')
+        parser = argparse.ArgumentParser(description = 'Generates Flutter project architecture based on template')
         parser.add_argument('-t', '--Template', help = 'Name of template to generate from')
         parser.add_argument('-n', '--Name', help = 'Name of generated module')
         args = parser.parse_args()
