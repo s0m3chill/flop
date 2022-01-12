@@ -19,7 +19,7 @@ class ArgumentsParser:
 
 
 class ModuleParser:
-    __parsedExtension = '.dart'
+    __parsedExtensions = ['.dart', '.yaml', '.md']
 
     def __init__(self, templateName, moduleName, generatedModuleName):
         self.templateName = templateName
@@ -30,7 +30,7 @@ class ModuleParser:
     def traverseAndParseFiles(self):
         for root, dirs, files in os.walk(self.generatedModuleName):
             for fileName in files:
-               if pathlib.Path(fileName).suffix == self.__parsedExtension:
+               if self.__parsedExtensions.__contains__(pathlib.Path(fileName).suffix):
                   filePath = os.path.join(root, fileName)
                   renamedFilePath = filePath.replace(self.templateName.lower(), self.moduleName.lower())
                   self.__replaceContents(filePath)

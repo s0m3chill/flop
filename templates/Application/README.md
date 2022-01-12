@@ -1,6 +1,6 @@
 # application
 
-A template for a Flutter application project type
+Generated application project from ModuleGenerator template
 
 ## Getting Started
 
