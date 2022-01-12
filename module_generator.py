@@ -52,11 +52,14 @@ class ModuleParser:
 # Parse user input arguments and prepare names / paths
 argumentsParser = ArgumentsParser()
 argumentsParser.parseUserInput()
-generatedModuleName = 'gen'
+generatedTemplateFolder = 'gen/' + argumentsParser.moduleName
+
+# Creates generated folder which contains templates
+os.mkdir('gen')
 
 # Copy entire folder tree structure to the generated folder with module name
-shutil.copytree(argumentsParser.templatePath, generatedModuleName)
+shutil.copytree(argumentsParser.templatePath, generatedTemplateFolder)
 
 # Parse copied template tree and rename files / contents to module name
-moduleParser = ModuleParser(argumentsParser.templateName, argumentsParser.moduleName, generatedModuleName)
+moduleParser = ModuleParser(argumentsParser.templateName, argumentsParser.moduleName, generatedTemplateFolder)
 moduleParser.traverseAndParseFiles()
