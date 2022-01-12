@@ -1,0 +1,30 @@
+name: application
+description: A template for a Flutter application project type
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.2
+  sleek_circular_slider: ^2.0.1
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test: ^1.14.1
+  flutter_driver:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  get_it: ^7.2.0
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
