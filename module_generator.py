@@ -52,10 +52,17 @@ class ModuleParser:
 # Parse user input arguments and prepare names / paths
 argumentsParser = ArgumentsParser()
 argumentsParser.parseUserInput()
-generatedTemplateFolder = 'gen/' + argumentsParser.moduleName
+generatedTemplatesContainerFolder = 'gen'
+generatedTemplateFolder = generatedTemplatesContainerFolder + '/' + argumentsParser.moduleName
 
-# Creates generated folder which contains templates
-os.mkdir('gen')
+# Create generated folder which contains templates if does not exist yet
+if pathlib.Path(generatedTemplatesContainerFolder).is_dir == False:
+    os.mkdir(generatedTemplatesContainerFolder)
+
+# Remove previously created template if such exists
+possiblyExistingGeneratedTemplatePath = os.path.join(os.getcwd(), generatedTemplateFolder)
+if os.path.exists(possiblyExistingGeneratedTemplatePath):
+    shutil.rmtree(possiblyExistingGeneratedTemplatePath)
 
 # Copy entire folder tree structure to the generated folder with module name
 shutil.copytree(argumentsParser.templatePath, generatedTemplateFolder)
