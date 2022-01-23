@@ -9,9 +9,9 @@ class ArgumentsParser:
     __templatesFolder = '/templates/'
 
     def parseUserInput(self):
-        parser = argparse.ArgumentParser(description = 'Generates Flutter project architecture based on template')
-        parser.add_argument('-t', '--Template', help = 'Name of template to generate from')
-        parser.add_argument('-n', '--Name', help = 'Name of generated module')
+        parser = argparse.ArgumentParser(description = 'Produces Flutter project architecture based on template')
+        parser.add_argument('-t', '--Template', help = 'Name of template to produce from')
+        parser.add_argument('-n', '--Name', help = 'Name of the produced module')
         args = parser.parse_args()
         self.templateName = args.Template if args.Template else self.__fallbackName
         self.templatePath = os.getcwd() + self.__templatesFolder + self.templateName
