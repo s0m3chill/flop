@@ -4,6 +4,7 @@ import shutil
 import argparse
 import re
 
+
 class ArgumentsParser:
     __fallbackName = 'application'
     __templatesFolder = '/templates/'
@@ -49,24 +50,30 @@ class ModuleParser:
 
 ##########################################################################################################
 
-# Parse user input arguments and prepare names / paths
-argumentsParser = ArgumentsParser()
-argumentsParser.parseUserInput()
-generatedTemplatesContainerFolder = 'gen'
-generatedTemplateFolder = generatedTemplatesContainerFolder + '/' + argumentsParser.moduleName
+def main():
+    # Parse user input arguments and prepare names / paths
+    argumentsParser = ArgumentsParser()
+    argumentsParser.parseUserInput()
+    generatedTemplatesContainerFolder = 'gen'
+    generatedTemplateFolder = generatedTemplatesContainerFolder + '/' + argumentsParser.moduleName
 
-# Create generated folder which contains templates if does not exist yet
-if pathlib.Path(generatedTemplatesContainerFolder).is_dir == False:
-    os.mkdir(generatedTemplatesContainerFolder)
+    # Create generated folder which contains templates if does not exist yet
+    if pathlib.Path(generatedTemplatesContainerFolder).is_dir == False:
+       os.mkdir(generatedTemplatesContainerFolder)
 
-# Remove previously created template if such exists
-possiblyExistingGeneratedTemplatePath = os.path.join(os.getcwd(), generatedTemplateFolder)
-if os.path.exists(possiblyExistingGeneratedTemplatePath):
-    shutil.rmtree(possiblyExistingGeneratedTemplatePath)
+    # Remove previously created template if such exists
+    possiblyExistingGeneratedTemplatePath = os.path.join(os.getcwd(), generatedTemplateFolder)
+    if os.path.exists(possiblyExistingGeneratedTemplatePath):
+       shutil.rmtree(possiblyExistingGeneratedTemplatePath)
 
-# Copy entire folder tree structure to the generated folder with module name
-shutil.copytree(argumentsParser.templatePath, generatedTemplateFolder)
+    # Copy entire folder tree structure to the generated folder with module name
+    shutil.copytree(argumentsParser.templatePath, generatedTemplateFolder)
 
-# Parse copied template tree and rename files / contents to module name
-moduleParser = ModuleParser(argumentsParser.templateName, argumentsParser.moduleName, generatedTemplateFolder)
-moduleParser.traverseAndParseFiles()
+    # Parse copied template tree and rename files / contents to module name
+    moduleParser = ModuleParser(argumentsParser.templateName, argumentsParser.moduleName, generatedTemplateFolder)
+    moduleParser.traverseAndParseFiles()
+
+
+if __name__ == '__main__':
+    main()
+
