@@ -1,9 +1,9 @@
 # flop
-**F**lutter **L**ightweight m**O**dule **P**roducer <br /> <br />
+**F**lutter **L**ightweight m**O**dule **P**roducer <br />
 
-**flop** command line tool helps produce / generate fully working Flutter projects from existing templates. <br />
+**flop** command line tool helps you produce fully working Flutter projects from existing templates. <br />
 You can create new or configure existing templates based on your needs. <br />
-After project is produced, it's stored in newly created 'gen' folder. <br /> <br />
+After project is produced, it's stored in newly created 'gen' folder and all the files and sources match it's name. <br /> <br />
 Inspired by plopjs.com
 
 ## Usage
