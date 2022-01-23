@@ -1,6 +1,6 @@
 # flop
-Flutter Lightweight mOdule Producer
-Generates Flutter modules from a Template
+Flutter Lightweight mOdule Producer <br />
+Produces Flutter modules from a Template
 
 ## Usage
 // both 'template_name' and 'module_name' are lowercased
