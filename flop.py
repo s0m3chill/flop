@@ -11,8 +11,8 @@ class ArgumentsParser:
 
     def parseUserInput(self):
         parser = argparse.ArgumentParser(description = 'Produces Flutter project architecture based on template')
-        parser.add_argument('-t', '--Template', help = 'Name of template to produce from')
-        parser.add_argument('-n', '--Name', help = 'Name of the produced module')
+        parser.add_argument('-t', '--template', help = 'Name of template to produce from')
+        parser.add_argument('-n', '--name', help = 'Name of the produced module')
         args = parser.parse_args()
         self.templateName = args.Template if args.Template else self.__fallbackName
         self.templatePath = os.getcwd() + self.__templatesFolder + self.templateName
